@@ -1,6 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import './App.css';
 import { viewState } from './atoms';
+import FeatherIcon from './FeatherIcon';
 import Nav from './Nav';
 import NewGarment from './NewGarment';
 
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <div className="App">
+      <FeatherIcon name="plus" />
       <Nav />
       {view === 'newGarment' && <NewGarment />}
       {view === 'outfits' && 'Outfits'}
