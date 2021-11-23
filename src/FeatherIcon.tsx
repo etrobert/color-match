@@ -1,13 +1,17 @@
-import feather from 'feather-icons';
+import feather, { FeatherAttributes } from 'feather-icons';
 
 type Props = {
   name: string;
+  options?: FeatherAttributes;
 };
 
-const FeatherIcon = ({ name }: Props) => (
+const FeatherIcon = ({ name, options }: Props) => (
   <span
     dangerouslySetInnerHTML={{
-      __html: feather.icons[name].toSvg({ style: 'display: block' }),
+      __html: feather.icons[name].toSvg({
+        style: 'display: block', // TODO combine with style from options
+        ...options,
+      }),
     }}
   />
 );

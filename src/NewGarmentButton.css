@@ -1,5 +1,8 @@
 .NewGarmentButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
   background-color: #ff4081;
-  border-radius: 1rem;
+  border-radius: 2rem;
   border: none;
 }
