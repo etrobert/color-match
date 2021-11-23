@@ -8,16 +8,7 @@ import chemisePapi from './pictures/chemisePapi.jpeg';
 import { useEffect, useState } from 'react';
 import Vibrant from 'node-vibrant';
 import { Palette } from 'node-vibrant/lib/color';
-
-const ColorComponent = ({ color }: { color: string }) => (
-  <div
-    style={{
-      width: 100,
-      height: 100,
-      backgroundColor: color,
-    }}
-  />
-);
+import ColorPicker from './ColorPicker';
 
 const NewGarment = () => {
   const photo = chemisePapi;
@@ -35,16 +26,7 @@ const NewGarment = () => {
   return (
     <>
       <img src={photo} />
-      {palette !== undefined &&
-        Object.entries(palette).map(
-          ([key, value]) =>
-            value !== undefined && (
-              <div>
-                {key}
-                <ColorComponent color={value.getHex()} />
-              </div>
-            )
-        )}
+      {palette !== undefined && <ColorPicker palette={palette} />}
     </>
   );
 };
