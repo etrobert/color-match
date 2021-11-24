@@ -3,6 +3,8 @@ import Vibrant from 'node-vibrant';
 import { Palette } from 'node-vibrant/lib/color';
 import ColorPicker from './ColorPicker';
 
+import './NewGarment.css';
+
 type Props = {
   imageData: string;
 };
@@ -20,7 +22,7 @@ const NewGarment = ({ imageData }: Props) => {
   }, [palette]);
   return (
     <>
-      <img src={imageData} alt="garment" />
+      <img className="NewGarment__image" src={imageData} alt="garment" />
       {palette !== undefined && <ColorPicker palette={palette} />}
     </>
   );
