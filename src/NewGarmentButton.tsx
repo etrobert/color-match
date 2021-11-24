@@ -6,9 +6,10 @@ import './NewGarmentButton.css';
 
 type Props = {
   className?: string;
+  onDone: (imageData: string) => void;
 };
 
-const NewGarmentButton = ({ className }: Props) => {
+const NewGarmentButton = ({ className, onDone }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <>
@@ -17,6 +18,17 @@ const NewGarmentButton = ({ className }: Props) => {
         accept="image/*"
         ref={ref}
         style={{ display: 'none' }}
+        onChange={(event) => {
+          const files = event.target.files;
+          if (files === null) return;
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const result = event.target?.result;
+            if (typeof result !== 'string') return;
+            onDone(result);
+          };
+          reader.readAsDataURL(files[0]);
+        }}
       />
       <button
         onClick={() => ref.current?.click()}

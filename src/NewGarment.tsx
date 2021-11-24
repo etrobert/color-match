@@ -1,31 +1,26 @@
-import robe from './pictures/robe.jpeg';
-import redOrange from './pictures/red-orange.jpg';
-import robe2 from './pictures/robe2.jpeg';
-import chemiseSatin from './pictures/chemiseSatin.jpeg';
-import pullViolet from './pictures/pullViolet.jpeg';
-import bite from './pictures/bite.jpeg';
-import chemisePapi from './pictures/chemisePapi.jpeg';
 import { useEffect, useState } from 'react';
 import Vibrant from 'node-vibrant';
 import { Palette } from 'node-vibrant/lib/color';
 import ColorPicker from './ColorPicker';
 
-const NewGarment = () => {
-  const photo = chemisePapi;
+type Props = {
+  imageData: string;
+};
 
+const NewGarment = ({ imageData }: Props) => {
   const [palette, setPalette] = useState<Palette>();
   useEffect(() => {
-    Vibrant.from(photo)
+    Vibrant.from(imageData)
       .getPalette()
       .then((palette) => setPalette(palette));
-  }, [photo]);
+  }, [imageData]);
 
   useEffect(() => {
     console.log(palette);
   }, [palette]);
   return (
     <>
-      <img src={photo} />
+      <img src={imageData} alt="garment" />
       {palette !== undefined && <ColorPicker palette={palette} />}
     </>
   );
