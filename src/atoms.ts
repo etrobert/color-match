@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-type View = 'newGarment' | 'outfits' | 'collection';
+type View = 'outfits' | 'collection';
 
 const viewState = atom<View>({
   key: 'View',

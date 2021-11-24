@@ -8,9 +8,6 @@ const Nav = () => {
     <nav>
       <ul>
         <li>
-          <button onClick={() => setView('newGarment')}>Add Garment</button>
-        </li>
-        <li>
           <button onClick={() => setView('outfits')}>Create Outfit</button>
         </li>
         <li>
