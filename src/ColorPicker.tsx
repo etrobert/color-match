@@ -1,4 +1,6 @@
-import { Palette } from 'node-vibrant/lib/color';
+import { Palette, Swatch } from 'node-vibrant/lib/color';
+import { useState } from 'react';
+import without from 'lodash/without';
 
 import './ColorPicker.css';
 
@@ -12,14 +14,35 @@ const ColorComponent = ({ color }: { color: string }) => (
   />
 );
 
-const ColorPicker = ({ palette }: { palette: Palette }) => {
+type Props = {
+  palette: Palette;
+  onSubmit: (colors: Swatch[]) => void;
+};
+
+const ColorPicker = ({ palette, onSubmit }: Props) => {
+  const [selected, setSelected] = useState<Swatch[]>([]);
+
   return (
-    <form className="ColorPicker">
+    <form
+      className="ColorPicker"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit(selected);
+      }}
+    >
       {Object.entries(palette).map(
         ([key, value]) =>
           value !== undefined && (
             <label>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={(event) => {
+                  const { checked } = event.target;
+                  setSelected((selected) =>
+                    checked ? [...selected, value] : without(selected, value)
+                  );
+                }}
+              />
               {key}
               <ColorComponent color={value.getHex()} />
             </label>

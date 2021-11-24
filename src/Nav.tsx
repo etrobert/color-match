@@ -11,7 +11,7 @@ const Nav = () => {
           <button onClick={() => setView('outfits')}>Create Outfit</button>
         </li>
         <li>
-          <button onClick={() => setView('collection')}>My clothes</button>
+          <button onClick={() => setView('wardrobe')}>My clothes</button>
         </li>
       </ul>
     </nav>

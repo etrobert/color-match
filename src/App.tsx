@@ -18,10 +18,13 @@ function App() {
           <NewGarmentButton onDone={setImageData} />
           <Nav />
           {view === 'outfits' && 'Outfits'}
-          {view === 'collection' && 'Collection'}
+          {view === 'wardrobe' && 'Wardrobe'}
         </>
       ) : (
-        <NewGarment imageData={imageData} />
+        <NewGarment
+          imageData={imageData}
+          onDone={() => setImageData(undefined)}
+        />
       )}
     </div>
   );
