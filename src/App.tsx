@@ -5,6 +5,7 @@ import { viewState } from './atoms';
 import Nav from './Nav';
 import NewGarment from './NewGarment';
 import NewGarmentButton from './NewGarmentButton';
+import Wardrobe from './Wardrobe';
 
 function App() {
   const view = useRecoilValue(viewState);
@@ -18,7 +19,7 @@ function App() {
           <NewGarmentButton onDone={setImageData} />
           <Nav />
           {view === 'outfits' && 'Outfits'}
-          {view === 'wardrobe' && 'Wardrobe'}
+          {view === 'wardrobe' && <Wardrobe />}
         </>
       ) : (
         <NewGarment
