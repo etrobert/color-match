@@ -1,11 +1,19 @@
 import { Swatch } from 'node-vibrant/lib/color';
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
+import flatten from 'lodash/flatten';
+
+import { colorDiff, pairs } from './utils';
 
 type View = 'outfits' | 'wardrobe';
 
 type Garment = {
   imageData: string;
   colors: Swatch[];
+};
+
+type Outfit = {
+  score: number;
+  garments: readonly Garment[];
 };
 
 const viewState = atom<View>({
@@ -18,4 +26,21 @@ const wardrobeState = atom<Garment[]>({
   default: [],
 });
 
-export { viewState, wardrobeState };
+const computeScore = (garments: readonly Garment[]): number => {
+  const colors = flatten(garments.map((garment) => garment.colors));
+  const colorPairsScores = pairs(colors).map(colorDiff);
+  return Math.max(...colorPairsScores);
+};
+
+const outfitsState = selector<Outfit[]>({
+  key: 'Outfits',
+  get: ({ get }) => {
+    const wardrobe = get(wardrobeState);
+    return pairs(wardrobe).map((pair) => ({
+      garments: pair,
+      score: computeScore(pair),
+    }));
+  },
+});
+
+export { viewState, wardrobeState, outfitsState };
