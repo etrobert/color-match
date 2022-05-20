@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Colors from './Colors';
 import NewOutfitButton from './NewOutfitButton';
 
 import './OutfitScorer.css';
@@ -15,6 +16,7 @@ const OutfitScorer = () => {
           src={outfit}
         />
       )}
+      <Colors />
       <NewOutfitButton onDone={setOutfit} />
     </div>
   );
