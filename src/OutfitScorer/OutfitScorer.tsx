@@ -7,7 +7,7 @@ const OutfitScorer = () => {
   const [outfit, setOutfit] = useState<string | null>(null);
 
   return (
-    <>
+    <div className="OutfitScorer">
       {outfit !== null && (
         <img
           className="OutfitScorer__image"
@@ -16,7 +16,7 @@ const OutfitScorer = () => {
         />
       )}
       <NewOutfitButton onDone={setOutfit} />
-    </>
+    </div>
   );
 };
 

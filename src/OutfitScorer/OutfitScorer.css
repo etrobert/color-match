@@ -1,3 +1,7 @@
+.OutfitScorer {
+  display: grid;
+}
+
 .OutfitScorer__image {
   width: 100%;
 }
