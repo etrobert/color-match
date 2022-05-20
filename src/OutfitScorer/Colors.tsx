@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import colorsState from './atoms';
+import { colorsState } from './atoms';
 
 /**
  * Returns `array` with the element at `index` set to `value` without mutating `array`

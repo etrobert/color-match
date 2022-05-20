@@ -1,5 +1,10 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 const colorsState = atom<string[]>({ key: 'Colors', default: [] });
 
-export default colorsState;
+const monochromaticScoreState = selector<number>({
+  key: 'MonochromaticScore',
+  get: () => 0,
+});
+
+export { colorsState, monochromaticScoreState };
