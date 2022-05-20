@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { useRef } from 'react';
-import FeatherIcon from '../FeatherIcon';
 
 import './NewOutfitButton.css';
 
@@ -35,10 +34,7 @@ const NewOutfitButton = ({ className, onDone }: Props) => {
         onClick={() => ref.current?.click()}
         className={classNames('NewOutfitButton', className)}
       >
-        <FeatherIcon
-          name="plus"
-          options={{ width: '2.5rem', height: '2.5rem' }}
-        />
+        Show us your outfit!
       </button>
     </>
   );
