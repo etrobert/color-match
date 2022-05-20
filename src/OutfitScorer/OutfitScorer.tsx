@@ -8,7 +8,13 @@ const OutfitScorer = () => {
 
   return (
     <>
-      {outfit !== null && <img className="OutfitScorer__image" src={outfit} />}
+      {outfit !== null && (
+        <img
+          className="OutfitScorer__image"
+          alt="Selected Outfit"
+          src={outfit}
+        />
+      )}
       <NewOutfitButton onDone={setOutfit} />
     </>
   );
