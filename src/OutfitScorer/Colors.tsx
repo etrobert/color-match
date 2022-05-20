@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import colorsState from './atoms';
 
 /**
  * Returns `array` with the element at `index` set to `value` without mutating `array`
@@ -10,7 +11,7 @@ const changeElement = <T,>(array: T[], index: number, value: T) => {
 };
 
 const Colors = () => {
-  const [colors, setColors] = useState<string[]>([]);
+  const [colors, setColors] = useRecoilState(colorsState);
 
   return (
     <div className="Colors">
