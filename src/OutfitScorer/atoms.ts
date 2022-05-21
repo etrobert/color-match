@@ -1,9 +1,7 @@
 import { atom, selector } from 'recoil';
+import max from 'lodash/max';
 import { pairs } from '../utils';
 import colorDistance from './colorDistance';
-
-const average = (array: number[]) =>
-  array.reduce((a, b) => a + b) / array.length;
 
 const colorsState = atom<string[]>({ key: 'Colors', default: [] });
 
@@ -19,10 +17,10 @@ const monochromaticScoreState = selector<number>({
     const distances = colorPairs.map(([c1, c2]) => colorDistance(c1, c2));
 
     // Between 0 (best) and 0.5 (worst)
-    const averageDistance = average(distances);
+    const maxDistance = max(distances) as number;
 
     // Between 100 (best) and 0 (worst)
-    return 100 - Math.floor((averageDistance * 100) / 0.5);
+    return 100 - Math.floor((maxDistance * 100) / 0.5);
   },
 });
 
